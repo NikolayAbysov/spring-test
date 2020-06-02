@@ -1,13 +1,12 @@
 package com.dev.springapp.dao.impl;
 
-import java.util.List;
 import com.dev.springapp.dao.UserDao;
 import com.dev.springapp.model.User;
+import java.util.List;
+import javax.persistence.TypedQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.TypedQuery;
 
 @Repository
 public class UserDaoImpl implements UserDao {
