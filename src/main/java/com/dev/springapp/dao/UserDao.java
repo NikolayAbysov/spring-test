@@ -4,6 +4,8 @@ import com.dev.springapp.model.User;
 import java.util.List;
 
 public interface UserDao {
+    
+    User get(Long id);
 
     void add(User user);
 
