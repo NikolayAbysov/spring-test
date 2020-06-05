@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @RequestMapping("/inject")
     public String inject() {
@@ -33,7 +33,11 @@ public class UserController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<UserResponseDto> getAll() {
-        return getAllDto();
+        return userService.listUsers()
+                .stream()
+                .map(this::getUserDto)
+                .collect(Collectors
+                        .toList());
     }
 
     private UserResponseDto getUserDto(User user) {
@@ -41,13 +45,5 @@ public class UserController {
         userResponseDto.setPassword(user.getPassword());
         userResponseDto.setEmail(user.getEmail());
         return userResponseDto;
-    }
-
-    private List<UserResponseDto> getAllDto() {
-        return userService.listUsers()
-                .stream()
-                .map(this::getUserDto)
-                .collect(Collectors
-                        .toList());
     }
 }
