@@ -17,6 +17,16 @@ public class UserDaoImpl implements UserDao {
     private SessionFactory sessionFactory;
 
     @Override
+    public User get(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return session.get(User.class, id);
+        } catch (Exception e) {
+            throw new DataProcessingException("Error while getting User. "
+                    + "Stacktrace: ", e);
+        }
+    }
+
+    @Override
     public void add(User user) {
         Session session = null;
         Transaction transaction = null;
