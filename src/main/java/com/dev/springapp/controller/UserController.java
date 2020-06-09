@@ -6,6 +6,7 @@ import com.dev.springapp.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/inject")
+    @GetMapping("/inject")
     public String inject() {
         userService.add(new User("reimu.hakurei@i.ua", "123"));
         userService.add(new User("remilia.scarlet@i.ua", "123"));
